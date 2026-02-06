@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagasri Maturi - Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<link href="transition.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+:root {
+--neon-green: #00FF9D;
+--dark-bg: #0D1117;
+--transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+background-color: var(--dark-bg);
+color: white;
+min-height: 100vh;
+}
+.neon-border {
+position: relative;
+}
+.neon-border::after {
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+border: 2px solid var(--neon-green);
+border-radius: inherit;
+opacity: 0.5;
+pointer-events: none;
+}
+.hexagon {
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background-color: var(--neon-green);
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.service-card {
+transition: transform 0.3s ease;
+}
+.service-card:hover {
+transform: translateY(-10px);
+}
+
+/* Certificate Card Animations */
+.cert-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s var(--transition-smooth);
+}
+
+.cert-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cert-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 255, 157, 0.1);
+}
+
+.cert-card .cert-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-card .cert-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: all 0.75s ease;
+}
+
+.cert-card:hover .cert-image::after {
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    100% {
+        left: 200%;
+    }
+}
+
+/* Dynamic Background */
+
+
+#certifications {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--dark-bg);
+}
+
+#certifications::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(135deg, rgba(0, 255, 157, 0.02) 0%, transparent 50%),
+        linear-gradient(225deg, rgba(0, 255, 157, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at center, rgba(0, 255, 157, 0.03) 0%, transparent 60%);
+    z-index: -1;
+    animation: certGlow 15s ease infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+#certifications::after {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: 
+        conic-gradient(from 0deg at 50% 50%,
+            rgba(0, 255, 157, 0.02) 0deg,
+            rgba(0, 255, 157, 0.03) 180deg,
+            rgba(0, 255, 157, 0.02) 360deg);
+    animation: slowRotate 30s linear infinite;
+    z-index: -2;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+}
+
+@keyframes certGlow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes slowRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#00FF9D',
+secondary: '#1A1E23'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+</head>
+<body class="font-sans">
+    <div class="page-transition"></div>
+    <header class="fixed w-full top-0 z-50 bg-[#0D1117] border-b border-gray-800">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="text-3xl font-['Pacifico'] text-primary">NM</a>
+    <div class="hidden md:flex space-x-8">
+    <a href="index.html" class="nav-link text-white hover:text-primary">HOME</a>
+    <a href="about.html" class="nav-link text-white hover:text-primary">ABOUT</a>
+    <a href="projects.html" class="nav-link text-white hover:text-primary">PROJECTS</a>
+    <a href="education.html" class="nav-link text-white hover:text-primary">EDUCATION</a>
+    <a href="certifications.html" class="nav-link text-white hover:text-primary">CERTIFICATIONS</a>
+    <a href="contact.html" class="nav-link text-white hover:text-primary">CONTACT</a>
+    </div>
+    <button class="md:hidden text-white focus:outline-none">
+    <i class="ri-menu-line text-2xl"></i>
+    </button>
+    </nav>
+    </header>
+    <main class="pt-20">
+        <section id="certifications" class="bg-[#0D1117] py-12">
+            <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Certifications & Achievements</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
+            <!-- Machine Learning Specialization (moved to the top) -->
+            <a href="https://coursera.org/share/7943e0c8b28f7ee98f7a16dafa83abf9" target="_blank" class="bg-secondary rounded-lg p-6 hover:scale-105 transition-transform duration-300">
+            <div class="h-48 mb-6 rounded-lg overflow-hidden">
+            <img src="https://public.readdy.ai/ai/img_res/7502515b7d6832377e785482446d4fc1.jpg"
+            alt="Machine Learning Certification"
+            class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Machine Learning</h3>
+            <p class="text-gray-400 mb-4">Completed machine learning specialization with DeepLearning.AI</p>
+            <div class="flex items-center text-primary">
+            <i class="ri-medal-line mr-2"></i>
+            <span>DeepLearning.AI</span>
+            </div>
+            </a>  
+            <!-- Azure AI fundamentals (moved to second) -->
+            <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6980ce64ddd4d05f4490e87b_1770097446117_completion_certificate.pdf" target="_blank" class="bg-secondary rounded-lg p-6 hover:scale-105 transition-transform duration-300">
+            <div class="h-48 mb-6 rounded-lg overflow-hidden">
+            <img src="TATA.png"
+            alt="GenAI Powered Data Analytics Completion Certificate"
+            class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold mb-3">GenAI Powered Data Analytics Job Simulation</h3>
+            <p class="text-gray-400 mb-4">completed Tata's GenAI Powered Data Analytics on Forage </p>
+            <div class="flex items-center text-primary">
+            <i class="ri-microsoft-fill mr-2"></i>
+            <span>TATA</span>
+            </div>
+            </a>  
+            <!-- Azure AI fundamentals (moved to third) -->
+            <a href="https://www.linkedin.com/learning/certificates/32ba4ee656b401132ee8c452af1ceeb5e0b9ed32f1b3eefd5912a48e14b940d6?trk=share_certificate" target="_blank" class="bg-secondary rounded-lg p-6 hover:scale-105 transition-transform duration-300">
+            <div class="h-48 mb-6 rounded-lg overflow-hidden">
+            <img src="microsoft_cer.png"
+            alt="Azure Certification"
+            class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Azure AI Essentials</h3>
+            <p class="text-gray-400 mb-4">Microsoft Azure AI Essentials Professional Certificate </p>
+            <div class="flex items-center text-primary">
+            <i class="ri-microsoft-fill mr-2"></i>
+            <span>Microsoft&LinkedIn</span>
+            </div>
+            </a>  
+            <!-- Gen AI Academy (moved to fourth) -->
+            <a href="https://certificate.hack2skill.com/user/genai2/2025H2S04GENAI-A100357" target="_blank" class="bg-secondary rounded-lg p-6 hover:scale-105 transition-transform duration-300">
+            <div class="h-48 mb-6 rounded-lg overflow-hidden">
+            <img src="genai.png"
+            alt="Google colude Certification"
+            class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Gen AI Academy</h3>
+            <p class="text-gray-400 mb-4">Completed hands-on training in Generative AI using Google tools including Vertex AI, Gemini APIs, Imagen, Streamlit, and Multimodal RAG.</p>
+            <div class="flex items-center text-primary">
+            <i class="ri-code-line mr-2"></i>
+            <span>Google cloud</span>
+            </div>
+            </a>  
+            <!-- Gen AI Academy (moved to fifth) -->
+            <a href="https://www.skills.google/public_profiles/b595da95-4076-45e2-90f1-ac5628eb945f/badges/16255660" target="_blank" class="bg-secondary rounded-lg p-6 hover:scale-105 transition-transform duration-300">
+            <div class="h-48 mb-6 rounded-lg overflow-hidden">
+            <img src="AIML.png"
+            alt="Google colude Certification"
+            class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Machine Learning and AI</h3>
+            <p class="text-gray-400 mb-4">Completed hands-on project develeped Gen AI apps with Gemini and Streamlit.</p>
+            <div class="flex items-center text-primary">
+            <i class="ri-code-line mr-2"></i>
+            <span>Google cloud</span>
+            </div>
+            </a>  
+            <!-- skill Badge (moved to sixth) -->
+            <a href="https://www.kaggle.com/certification/badges/nagasrimaturi/96" target="_blank" class="bg-secondary rounded-lg p-6 hover:scale-105 transition-transform duration-300">
+            <div class="h-48 mb-6 rounded-lg overflow-hidden">
+            <img src="kaggle.png"
+            alt="Intensive course"
+            class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold mb-3">Kaggle skill Badge</h3>
+            <p class="text-gray-400 mb-4">Achieved skill Badge in Gen AI Intensive Course with Google on Kaggle</p>
+            <div class="flex items-center text-primary">
+            <i class="ri-code-line mr-2"></i>
+            <span>Kaggle</span>
+            </div>
+            </a>  
+            
+            <!-- skill badge (moved to last) -->
+            <a href="https://www.kaggle.com/certification/badges/nagasrimaturi/105" target="_blank" class="bg-secondary rounded-lg p-6 hover:scale-105 transition-transform duration-300">
+            <div class="h-48 mb-6 rounded-lg overflow-hidden">
+            <img src="AiAgents.png"
+            alt="AI AGents"
+            class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold mb-3">AI Agents</h3>
+            <p class="text-gray-400 mb-4">AI Agents Intensive Course with Google Badge</p>
+            <div class="flex items-center text-primary">
+            <i class="ri-trophy-line mr-2"></i>
+            <span>Kaggle&Google</span>
+            </div>
+            </div>
+            </div> 
+        </section>
+    </main>
+    <script src="transition.js"></script>
+</body>
+</html> 
