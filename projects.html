@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Nagasri Maturi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111; scroll-behavior: smooth; }
+        
+        .project-grid { perspective: 2000px; }
+        .card-3d { 
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
+            transform-style: preserve-3d; 
+            border: 1px solid #f1f5f9; 
+            background: white;
+            cursor: pointer;
+        }
+        .project-card:hover .card-3d { 
+            transform: translateY(-12px) rotateX(2deg); 
+            border-color: #2563eb; 
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.12); 
+        }
+
+        /* The secret to the staggered subject move */
+        .edu-group:hover .skill-tag {
+            color: #2563eb;
+            background: #eff6ff;
+            transform: translateY(-8px); /* Moves it slightly up */
+        }
+
+/* Delaying each tag for a wave effect */
+        .skill-tag:nth-child(1) { transition-delay: 0.05s; }
+        .skill-tag:nth-child(2) { transition-delay: 0.1s; }
+        .skill-tag:nth-child(3) { transition-delay: 0.15s; }
+
+        .project-card { transition: all 0.4s ease; }
+        .hidden-by-filter { display: none !important; }
+        .hidden-by-view-more { display: none; }
+
+        #projectModal { transition: opacity 0.3s ease; }
+        .modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .modal-hidden { visibility: hidden; opacity: 0; pointer-events: none; }
+        .modal-hidden .modal-content { transform: scale(0.95) translateY(20px); }
+
+        .shimmer { position: relative; overflow: hidden; height: 13rem; background: #f8fafc; border-radius: 24px; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <nav class="flex justify-between items-center px-10 py-8 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter text-blue-600">NM<span class="text-purple-500"></span></div>
+        <div class="hidden md:flex space-x-10 font-bold text-[11px] uppercase tracking-[0.2em] text-gray-400">
+            <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+            <a href="about.html" class="hover:text-blue-600 transition">About</a>
+            <a href="projects.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Projects</a>
+            <a href="education.html" class="hover:text-blue-600 transition">Education</a>
+            <a href="certifications.html" class="hover:text-blue-600 transition">Certifications</a>
+            <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-10 py-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div>
+                <h1 class="text-7xl font-black tracking-tighter mb-4">Projects<br><span class="text-blue-600"></span></h1>
+                <p class="text-gray-400 font-medium text-lg"></p>
+            </div>
+
+            <select id="categoryFilter" class="bg-gray-50 text-gray-900 font-bold text-sm px-8 py-4 rounded-2xl border border-gray-100 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-600/20 shadow-sm">
+                <option value="all">All Categories</option>
+                <option value="Large Language model">LLM</option>
+                <option value="Natural Language Processing">NLP</option>
+                <option value="Computer Vision">Computer Vision</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Reinforcement Learning">Reinforcement Learning</option>
+                <option value="Generative AI">Generative AI</option>
+            </select>
+        </div>
+
+        <div id="projectsGrid" class="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="project-card" data-category="Generative AI" 
+                 onclick="openModal('FastAPI Notes APP', 'Developed a FastAPI-based backend application with RESTful endpoints for note creation and retrieval.Implemented SQLite database integration using SQLAlchemy for persistent data storage.Added pagination and search functionality to improve API scalability and usability.Integrated Generative AI (LLM API) to summarize user-provided text into structured outputs.Implemented proper error handling for external API failures and quota limitations Documented APIs using Swagger UI and provided clear project documentation.', 'https://github.com/nagasrimaturi/fastapi-notes-app', 'FastAPI backend,SQLite database (auto-created),Create and fetch notes,Pagination and optional search,AI summarization integration (LLM API),Auto-generated API documentation (Swagger UI)LTK, Scikit-learn', 'Generative AI')">
+                <div class="card-3d rounded-[40px] p-3 flex flex-col h-full">
+                    <div class="shimmer">
+                        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-black text-blue-600 uppercase mb-2 block">Generative AI</span>
+                        <h3 class="text-2xl font-black mb-3">FastAPI Notes App</h3>
+                        <span class="text-blue-600 font-bold text-xs">Open Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="Large Language model" 
+                 onclick="openModal('Simple CohereChatBot', 'The chatbot sends user messages to the Cohere API and receives AI-generated replies.It keeps limited chat history to maintain conversation context.The project demonstrates a basic Generative AI application using an external LLM API.', 'https://github.com/nagasrimaturi/cohere-multimode-chatbot', 'Python,Cohere API(LLM), Gradio', 'LLM')">
+                <div class="card-3d rounded-[40px] p-3 flex flex-col h-full">
+                    <div class="shimmer"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-black text-blue-600 uppercase mb-2 block">LLM</span>
+                        <h3 class="text-2xl font-black mb-3">Simple CohereChatBot</h3>
+                        <span class="text-blue-600 font-bold text-xs">Open Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="Large Language model" 
+                 onclick="openModal('Resume AI Reviewer', 'This project is an AI-powered resume reviewer that analyzes resumes in PDF format using an offline Large Language Model (LLaMA) • It extracts resume content and generates a summary, strengths, weaknesses, improvement suggestions, and missing ATS keywords. The application runs locally and provides an interactive web interface using Gradio.It demonstrates how local LLMs can be used for practical, real-world applications without relying on cloud APIs.The project combines PDF processing, prompt engineering, and language-model reasoning to deliver structured resume insights', 'https://github.com/nagasrimaturi/AI_RESUME_REVIEWER', 'TinyLLaMA, LangChain (prompt + LLM chaining), Gradio (interactive UI),PyMuPDF (fitz) for PDF text extraction', 'LLM')">
+                <div class="card-3d rounded-[40px] p-3 flex flex-col h-full">
+                    <div class="shimmer"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover"></div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-black text-blue-600 uppercase mb-2 block">LLM</span>
+                        <h3 class="text-2xl font-black mb-3">Resume AI Reviewer</h3>
+                        <span class="text-blue-600 font-bold text-xs">Open Details →</span>
+                    </div>
+                </div>
+            </div>
+
+           <div class="project-card hidden-by-view-more" data-category="Machine Learning"
+                onclick="openModal('Employee Salary Predictions', '•This project is an Employee Salary Classification app built using supervised machine learning.It predicts whether an employee earns more than 50K or less than/equal to 50K based on personal and job-related features.A Gradient Boosting model was selected as the best performer and deployed using Streamlit.It supports both single predictions through user input and batch predictions using CSV uploads.The app provides an easy-to-use interface for testing the model and downloading predicted results.', 'https://github.com/nagasrimaturi/Employee_salary_prediction_Nagasri/tree/main', 'Streamlit,Gradient Boosting model ', 'Machine Learning')">
+                <div class="card-3d rounded-[40px] p-3 flex flex-col h-full">
+                     <div class="shimmer"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover"></div>
+                     <div class="p-6">
+                            <span class="text-[10px] font-black text-blue-600 uppercase mb-2 block">Machine Learning</span>
+                            <h3 class="text-2xl font-black mb-3">Employee Salary Predictions</h3>
+                            <span class="text-blue-600 font-bold text-xs">Open Details →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card hidden-by-view-more" data-category="NLP"
+                onclick="openModal('NLP ChatBot','• A simple NLP-based chatbot that uses keyword matching and sentiment analysis to respond intelligently to user queries.It helps simulate a basic customer-support experience by handling greetings, store hours, and return-related queries.This project highlights foundational NLP concepts and serves as a stepping stone toward more advanced conversational AI systems.', 'https://github.com/nagasrimaturi/python_projects_build_ai_applications', 'Python,TextBlob (for NLP sentiment analysis)', 'NLP')">
+                <div class="card-3d rounded-[40px] p-3 flex flex-col h-full">
+                     <div class="shimmer"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000"  class="w-full h-full object-cover"></div>
+                     <div class="p-6">
+                            <span class="text-[10px] font-black text-blue-600 uppercase mb-2 block">NLP</span>
+                            <h3 class="text-2xl font-black mb-3">NLP ChatBot</h3>
+                            <span class="text-blue-600 font-bold text-xs">Open Details →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card hidden-by-view-more" data-category="Computer Vision"
+                onclick="openModal('Image Caption Generator','•Designed this system by leveraging Deep Learning Methodologies, specifically employing Convolutional Neural Networks (CNN) and Long Short-Term Memory (LSTM) techniques. Sourced and curated dataset from Kaggle to train the model effectively.Demonstrated proficiency by achieving a BLEU Score of 0.57. This project underscores my expertise in applying advanced technologies to solve real-world challenges in computer vision and natural language processing.', '', 'Python,LSTM,CNN', 'Computer Vision')">
+                <div class="card-3d rounded-[40px] p-3 flex flex-col h-full">
+                     <div class="shimmer h-48 overflow-hidden rounded-[30px]"><img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="AI Connections" class="w-full h-full object-cover"></div>
+                     <div class="p-6">
+                            <span class="text-[10px] font-black text-blue-600 uppercase mb-2 block">Computer Vision</span>
+                            <h3 class="text-2xl font-black mb-3">Image Caption Generator</h3>
+                            <span class="text-blue-600 font-bold text-xs">Open Details →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card hidden-by-view-more" data-category="Machine Learning"
+                onclick="openModal('Used Car Price Prediction','Developed Used Car Prediction application, employing Machine Learning Algorithms within Google Colab. Achieved error rate of 0.0021 utilizing Multiple Linear Regression to analyze and predict car prices based on customer-provided details.Conducted comprehensive analysis by systematically comparing prediction errors across three prominent Machine Learning methods Decision Tree, Random Forest, and Multiple Linear Regression. Curated the dataset from Kaggle website.', 'https://github.com/nagasrimaturi/Used_Car_Price_Prediction', 'Python,Decision Tree, Random Forest, and Multiple Linear Regression', 'Machine Learning')">
+                <div class="card-3d rounded-[40px] p-3 flex flex-col h-full">
+                     <div class="shimmer h-48 overflow-hidden rounded-[30px]"><img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1000" alt="AI Connections" class="w-full h-full object-cover"></div>
+                     <div class="p-6">
+                            <span class="text-[10px] font-black text-blue-600 uppercase mb-2 block">Machine Learning</span>
+                            <h3 class="text-2xl font-black mb-3">Used Car Price Prediction</h3>
+                            <span class="text-blue-600 font-bold text-xs">Open Details →</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="mt-24 text-center">
+            <button id="viewMoreBtn" class="px-12 py-5 bg-gray-900 text-white font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-blue-600 transition-all">
+                View All Projects
+            </button>
+            
+        </div>
+    </main>
+
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-md modal-hidden">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-[48px] overflow-hidden shadow-2xl">
+            <div class="p-10 md:p-14">
+                <div class="flex justify-between items-start mb-8">
+                    <div>
+                        <span id="modalCategory" class="text-blue-600 font-black text-xs uppercase tracking-widest">Category</span>
+                        <h2 id="modalTitle" class="text-4xl font-black tracking-tighter mt-2">Project Title</h2>
+                    </div>
+                    <button onclick="closeModal()" class="text-gray-300 hover:text-gray-900 transition text-3xl"><i class="ri-close-line"></i></button>
+                </div>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h4 class="font-black text-gray-900 text-xs uppercase tracking-widest mb-3">Overview</h4>
+                        <p id="modalDesc" class="text-gray-500 leading-relaxed">Description...</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-8 rounded-[32px] border border-gray-100">
+                        <h4 class="font-black text-gray-900 text-xs uppercase mb-2 tracking-widest">Tech Stack</h4>
+                        <p id="modalStack" class="text-blue-600 font-bold text-sm mb-6">Details...</p>
+                        <a id="modalRepo" href="#" target="_blank" class="inline-flex items-center justify-center w-full py-5 bg-gray-900 text-white font-black text-xs uppercase tracking-widest rounded-2xl hover:bg-black transition-all">
+                            <i class="ri-github-fill mr-2 text-xl"></i> View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JS Logic remains exactly the same as your input
+        const filter = document.getElementById('categoryFilter');
+        const viewMoreBtn = document.getElementById('viewMoreBtn');
+        const cards = document.querySelectorAll('.project-card');
+        const projectsGrid = document.getElementById('projectsGrid');
+        let isExpanded = false;
+
+        filter.addEventListener('change', (e) => {
+            const selected = e.target.value;
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (selected === 'all' || category === selected) {
+                    card.classList.remove('hidden-by-filter');
+                } else {
+                    card.classList.add('hidden-by-filter');
+                }
+            });
+            viewMoreBtn.style.display = (selected === 'all') ? 'inline-block' : 'none';
+        });
+
+        viewMoreBtn.addEventListener('click', () => {
+            if (!isExpanded) {
+                document.querySelectorAll('.hidden-by-view-more').forEach(card => {
+                    card.classList.remove('hidden-by-view-more');
+                    card.setAttribute('data-temp-show', 'true');
+                });
+                viewMoreBtn.innerText = "View Less";
+                isExpanded = true;
+            } else {
+                document.querySelectorAll('[data-temp-show="true"]').forEach(card => {
+                    card.classList.add('hidden-by-view-more');
+                    card.removeAttribute('data-temp-show');
+                });
+                viewMoreBtn.innerText = "View All Projects";
+                isExpanded = false;
+                projectsGrid.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        function openModal(title, desc, repo, stack, category) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalRepo').href = repo;
+            document.getElementById('modalStack').innerText = stack;
+            document.getElementById('modalCategory').innerText = category;
+            document.getElementById('projectModal').classList.remove('modal-hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.add('modal-hidden');
+            document.body.style.overflow = 'auto'; 
+        }
+        window.onclick = (e) => { if (e.target == document.getElementById('projectModal')) closeModal(); }
+    </script>
+</body>
+</html>

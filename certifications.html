@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications | Nagasri Maturi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111; overflow-x: hidden; }
+        
+        .cert-card {
+            background: white;
+            border: 1px solid #f1f5f9;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-12px);
+            border-color: #2563eb;
+            box-shadow: 0 40px 80px -15px rgba(37, 99, 235, 0.12);
+        }
+
+        .cert-image-wrapper {
+            width: 100%;
+            height: 180px;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+        }
+
+        .cert-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .cert-card:hover .cert-image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        /* Logic for Hiding/Showing */
+        .hidden-cert {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .show-all .hidden-cert {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="flex justify-between items-center px-10 py-8 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter text-blue-600">NM<span class="text-purple-500"></span></div>
+        <div class="hidden md:flex space-x-10 font-bold text-[11px] uppercase tracking-[0.2em] text-gray-400">
+            <a href="index.html" class="hover:text-blue-600 transition">HOME</a>
+            <a href="about.html" class="hover:text-blue-600 transition">ABOUT</a>
+            <a href="projects.html" class="hover:text-blue-600 transition">PROJECTS</a>
+            <a href="education.html" class="hover:text-blue-600 transition">EDUCATION</a>
+            <a href="certifications.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">CERTIFICATIONS</a>
+            <a href="contact.html" class="hover:text-blue-600 transition">CONTACT</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-10 py-16">
+        <div class="mb-20">
+            <h1 class="text-7xl font-black tracking-tighter">Verified <br><span class="text-blue-600">Credentials.</span></h1>
+            <p class="text-gray-400 font-medium text-lg mt-4">Professional validation of my technical capabilities.</p>
+        </div>
+
+        <div id="cert-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="cert-card p-6 rounded-[40px]">
+                <div class="cert-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Deep Learning Certificate">
+                </div>
+                <div class="px-2">
+                    <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-2">Machine Learning</span>
+                    <h3 class="text-2xl font-black tracking-tight mb-2 leading-tight">Machine learning specialization with DeepLearning.AI</h3>
+                    <p class="text-gray-400 font-bold text-[11px] mb-6">COURSERA • DEEPLEARNING.AI</p>
+                    <div class="flex items-center justify-between border-t border-gray-50 pt-5">
+                        <a href="https://coursera.org/share/7943e0c8b28f7ee98f7a16dafa83abf9" class="text-xs font-black uppercase tracking-widest text-gray-900 hover:text-blue-600 transition">Verify Certificate →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card p-6 rounded-[40px]">
+                <div class="cert-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Azure AI Certificate">
+                </div>
+                <div class="px-2">
+                    <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-2">Data Analytics</span>
+                    <h3 class="text-2xl font-black tracking-tight mb-2 leading-tight">GenAI Powered Data Analytics Job Simulation</h3>
+                    <p class="text-gray-400 font-bold text-[11px] mb-6">TATA</p>
+                    <div class="flex items-center justify-between border-t border-gray-50 pt-5">
+                        <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6980ce64ddd4d05f4490e87b_1770097446117_completion_certificate.pdf" class="text-xs font-black uppercase tracking-widest text-gray-900 hover:text-blue-600 transition">Verify Certificate →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card p-6 rounded-[40px]">
+                <div class="cert-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1000" alt="IBM Data Science">
+                </div>
+                <div class="px-2">
+                    <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-2">Azure AI Essentials</span>
+                    <h3 class="text-2xl font-black tracking-tight mb-2 leading-tight">Microsoft Azure AI Essentials Professional Certificate</h3>
+                    <p class="text-gray-400 font-bold text-[11px] mb-6">MICROSOFT & LINKEDIN</p>
+                    <div class="flex items-center justify-between border-t border-gray-50 pt-5">
+                        <a href="https://www.linkedin.com/learning/certificates/32ba4ee656b401132ee8c452af1ceeb5e0b9ed32f1b3eefd5912a48e14b940d6?trk=share_certificate" class="text-xs font-black uppercase tracking-widest text-gray-900 hover:text-blue-600 transition">Verify Certificate →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card p-6 rounded-[40px] hidden-cert">
+                <div class="cert-image-wrapper">
+                    <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Google GenAI">
+                </div>
+                <div class="px-2">
+                    <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-2">Gen AI Academy</span>
+                    <h3 class="text-2xl font-black tracking-tight mb-2 leading-tight">Generative AI Hands-on Training</h3>
+                    <p class="text-gray-400 font-bold text-[11px] mb-6">GOOGLE CLOUD</p>
+                    <div class="flex items-center justify-between border-t border-gray-50 pt-5">
+                        <a href="https://certificate.hack2skill.com/user/genai2/2025H2S04GENAI-A100357" class="text-xs font-black uppercase tracking-widest text-gray-900 hover:text-blue-600 transition">Verify Certificate →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card p-6 rounded-[40px] hidden-cert">
+                <div class="cert-image-wrapper">
+                    <img src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Google Cloud">
+                </div>
+                <div class="px-2">
+                    <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-2">Machine Learning and AI</span>
+                    <h3 class="text-2xl font-black tracking-tight mb-2 leading-tight">Gen AI Apps with Gemini & Streamlit</h3>
+                    <p class="text-gray-400 font-bold text-[11px] mb-6">GOOGLE CLOUD</p>
+                    <div class="flex items-center justify-between border-t border-gray-50 pt-5">
+                        <a href="https://www.skills.google/public_profiles/b595da95-4076-45e2-90f1-ac5628eb945f/badges/16255660" class="text-xs font-black uppercase tracking-widest text-gray-900 hover:text-blue-600 transition">Verify Certificate →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cert-card p-6 rounded-[40px] hidden-cert">
+                <div class="cert-image-wrapper">
+                    <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Kaggle">
+                </div>
+                <div class="px-2">
+                    <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-2">Kaggle skill Badge</span>
+                    <h3 class="text-2xl font-black tracking-tight mb-2 leading-tight">Gen AI Intensive Course Badge</h3>
+                    <p class="text-gray-400 font-bold text-[11px] mb-6">KAGGLE</p>
+                    <div class="flex items-center justify-between border-t border-gray-50 pt-5">
+                        <a href="https://www.kaggle.com/certification/badges/nagasrimaturi/96" class="text-xs font-black uppercase tracking-widest text-gray-900 hover:text-blue-600 transition">Verify Certificate →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex justify-center mt-20">
+            <button id="view-more-btn" class="bg-blue-600 text-white font-black uppercase tracking-widest text-[11px] px-10 py-5 rounded-full hover:bg-black transition-all shadow-xl shadow-blue-200">
+                View More Credentials
+            </button>
+        </div>
+    </main>
+
+    <script>
+        const viewMoreBtn = document.getElementById('view-more-btn');
+        const certGrid = document.getElementById('cert-grid');
+
+        viewMoreBtn.addEventListener('click', () => {
+            certGrid.classList.toggle('show-all');
+            
+            if (certGrid.classList.contains('show-all')) {
+                viewMoreBtn.innerText = "Show Less";
+            } else {
+                viewMoreBtn.innerText = "View More Credentials";
+                // Scroll back to top of grid when hiding
+                window.scrollTo({ top: certGrid.offsetTop - 100, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
